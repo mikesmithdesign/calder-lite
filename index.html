@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  Erin Calder Lite -- free one-page photographer template.
+  Free for personal and commercial use. Attribution appreciated.
+  Full version (series pages, pinned pan/stack sequences, lightbox, four
+  colour packs, JSON config, Astro): see README.md.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erin Calder Lite : free photographer template</title>
+<meta name="description" content="Erin Calder Lite is a free one-page HTML template for photographers. Full-bleed frames, kinetic serif titles, scroll reveals. Full Astro version available.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..600;1,400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="wordmark" href="#top">Erin Calder</a>
+  <a class="menubtn" href="#contact">Contact</a>
+</header>
+
+<main id="top">
+
+  <section class="head">
+    <figure class="head-fig"><img src="img/land-09.jpg" alt="Boats at anchor under a break in storm light" width="1920" height="1216" fetchpriority="high"></figure>
+    <div class="head-row">
+      <h1 class="hero-name">Erin<br>Calder</h1>
+      <p class="standfirst">Documentary photographer on the working coast of east Scotland: harbours that still fish, resorts out of season.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <h2 class="ktitle reveal">Selected work</h2>
+    <div class="row-text">
+      <p>Long-term documentary projects on the Fife coast, alongside editorial commissions for magazines and weekend supplements.</p>
+    </div>
+  </section>
+
+  <div class="frame trio">
+    <figure class="reveal"><img src="img/land-02.jpg" alt="Creels stacked on the quay" width="1600" height="1067" loading="lazy"></figure>
+    <figure class="reveal"><img src="img/sea-02.jpg" alt="The beach with seafront terraces behind" width="1600" height="1067" loading="lazy"></figure>
+    <figure class="reveal"><img src="img/land-04.jpg" alt="The bow of a red-hulled fishing boat, registration EH 10" width="1100" height="1375" loading="lazy"></figure>
+  </div>
+
+  <section class="about-sec">
+    <div class="about-grid">
+      <div class="bio">
+        <h2 class="ktitle reveal">About</h2>
+        <p>I'm Erin Calder, a documentary photographer based in the East Neuk of Fife. Harbours, boatyards, seafronts, and the people who keep them going. Most of my time goes into long projects, the rest into editorial commissions.</p>
+        <p>Open for a small number of commissions each year: editorial and documentary work, and portraits on location.</p>
+      </div>
+      <div class="about-fig reveal">
+        <figure><img src="img/portrait.jpg" alt="Erin Calder in a wool coat, photographed on the coast" width="1100" height="1375" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="closer" id="contact">
+  <figure><img src="img/sea-08.jpg" alt="The old lido pavilion above the rocks" width="1100" height="1375" loading="lazy"></figure>
+  <div class="closer-card">
+    <p class="closer-note">Open for editorial and documentary commissions.</p>
+    <a class="btn" href="mailto:hello@erincalder.co.uk">hello@erincalder.co.uk</a>
+    <p class="closer-sub"><a href="tel:+447700900214">07700 900 214</a> &middot; <a href="https://instagram.com/erincalder.photo">Instagram</a></p>
+  </div>
+</div>
+
+<footer class="foot">
+  <span><b>Erin Calder</b>, documentary photographer, Fife</span>
+  <span class="foot-links">
+    <a href="mailto:hello@erincalder.co.uk">hello@erincalder.co.uk</a>
+    <a href="tel:+447700900214">07700 900 214</a>
+    <a href="https://instagram.com/erincalder.photo">Instagram</a>
+  </span>
+</footer>
+
+<script src="lenis.min.js"></script>
+<script>
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED && window.Lenis) {
+  const lenis = new Lenis({ lerp: .09 });
+  (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })();
+}
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .14 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+if (REDUCED) document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+</script>
+</body>
+</html>

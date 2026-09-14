@@ -1,0 +1,120 @@
+/* ============================================================================
+   ERIN CALDER LITE : free one-page photographer template. Same register as
+   the full theme (Instrument Serif display over full-bleed frames, Instrument
+   Sans text), simplified to one page: no menu overlay, no lightbox, no
+   pinned pan/stack sequences, one colour pack, plain scroll reveals.
+   Full version: Astro, series pages, pinned choreography, four colour
+   packs, JSON data layer. See README.md.
+   ========================================================================== */
+:root{
+  --ground:#FAF9F7;
+  --ink:#161412;
+  --body:#403C38;
+  --dim:#6E6963;
+  --accent:#B4472A;
+  --rule:rgba(22,20,18,.16);
+  --sans:"Instrument Sans",system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --pad:clamp(20px,4vw,48px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ground);color:var(--body);font-family:var(--sans);
+  font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit}
+h1,h2{color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--ink);color:var(--ground)}
+
+/* header */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:baseline;
+  justify-content:space-between;padding:22px var(--pad);color:var(--ink)}
+.top::before{content:"";position:absolute;inset:0 0 -52px 0;z-index:-1;
+  background:linear-gradient(to bottom,color-mix(in srgb,var(--ground) 90%,transparent),transparent)}
+.top a{text-decoration:none}
+.wordmark{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.menubtn{font-size:13.5px;letter-spacing:.14em;text-transform:uppercase}
+.menubtn:hover{color:var(--accent)}
+
+/* kinetic-register titles, simplified to a plain fade/rise (no clipped-line motion) */
+.ktitle{color:var(--accent);font-family:var(--serif);font-style:italic;font-weight:400;
+  letter-spacing:-.01em;line-height:.98;font-size:clamp(40px,6vw,80px)}
+.hero-name{color:var(--ink);font-family:var(--serif);letter-spacing:-.02em;
+  font-size:clamp(64px,13vw,180px);line-height:.9}
+
+/* head : full-viewport frame, title bottom-aligned */
+.head{position:relative;height:100svh}
+.head .head-fig{position:absolute;inset:0;overflow:hidden;margin:0}
+.head .head-fig img{width:100%;height:100%;object-fit:cover}
+.head .head-fig::after{content:"";position:absolute;inset:42% 0 0 0;
+  background:linear-gradient(to top,color-mix(in srgb,var(--ground) 92%,transparent) 12%,transparent)}
+.head-row{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:0;
+  display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(24px,4vw,64px);align-items:end;padding-bottom:28px}
+.standfirst{max-width:36ch;font-size:clamp(16px,1.6vw,19px);line-height:1.5;color:var(--ink);padding-bottom:.3em}
+
+/* rows + frames */
+.row{max-width:min(1280px,calc(100vw - 2*var(--pad)));margin:clamp(64px,10vh,120px) auto 0;
+  padding-top:clamp(16px,2.4vh,26px);border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(24px,4vw,64px);align-items:baseline}
+.row .ktitle{margin:0}
+.row p{max-width:44ch;font-size:clamp(17px,1.8vw,20px);color:var(--ink)}
+.frame{margin:clamp(28px,4.5vh,52px) auto;max-width:min(1280px,calc(100vw - 2*var(--pad)));
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(14px,2vw,26px)}
+.frame figure{overflow:hidden}
+.frame img{aspect-ratio:3/2;object-fit:cover}
+.frame figure:nth-child(2) img,.frame figure:nth-child(3) img{aspect-ratio:4/5}
+
+/* about */
+.about-sec{padding-bottom:clamp(48px,8vh,100px)}
+.about-grid{max-width:min(1140px,92vw);margin:clamp(80px,12vh,140px) auto 0;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,90px);align-items:start}
+.about-grid .bio .ktitle{margin-bottom:clamp(20px,3vh,32px)}
+.about-grid .bio p{max-width:56ch;margin-bottom:1.2em;font-size:clamp(16px,1.8vw,18px)}
+.about-grid .about-fig{max-width:380px;justify-self:end}
+.about-grid .about-fig figure{overflow:hidden}
+
+/* reveal : simple fade + rise, no scroll-jacked pins (that's a paid feature) */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* closer : full-bleed band + contact card */
+.closer{position:relative;height:clamp(360px,60svh,560px);overflow:hidden;margin-top:clamp(56px,9vh,110px)}
+.closer figure,.closer img{width:100%;height:100%;object-fit:cover}
+.closer::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--ink) 60%,transparent),transparent 60%)}
+.closer-card{position:absolute;left:var(--pad);right:var(--pad);bottom:32px;z-index:2;color:var(--ground)}
+.closer-note{font-size:14px;letter-spacing:.02em;margin-bottom:12px}
+.closer .btn{display:inline-block;font-family:var(--serif);font-style:italic;font-size:clamp(28px,4vw,46px);
+  color:var(--ground);text-decoration:none}
+.closer .btn:hover{color:#fff}
+.closer-sub{margin-top:10px;font-size:13.5px}
+.closer-sub a{text-decoration:none;color:var(--ground);opacity:.85}
+.closer-sub a:hover{opacity:1}
+
+/* footer */
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  gap:10px 40px;padding:26px var(--pad);font-size:13.5px;color:var(--dim)}
+.foot b{color:var(--ink);font-weight:500}
+.foot-links{display:flex;gap:26px}
+.foot-links a{text-decoration:none;color:var(--body)}
+.foot-links a:hover{color:var(--accent)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+@media (max-width:1023px){
+  .head-row{grid-template-columns:1fr;row-gap:14px}
+  .standfirst{max-width:30ch}
+}
+@media (max-width:840px){
+  .about-grid{grid-template-columns:1fr}
+  .about-grid .about-fig{justify-self:start;max-width:340px}
+}
+@media (max-width:719px){
+  .frame{grid-template-columns:1fr;gap:18px}
+  .row{grid-template-columns:1fr;row-gap:14px}
+  .closer{height:min(50svh,440px)}
+  .foot{flex-direction:column;gap:8px}
+  .foot-links{flex-wrap:wrap;gap:14px}
+}
