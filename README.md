@@ -36,4 +36,4 @@ a grow-to-full-bleed moment), a chromeless lightbox viewer, a commission
 enquiry form, four colour packs with a one-click switcher, and JSON-driven
 content, built as an Astro 7 project.
 
-→ https://mikesmithdesign.gumroad.com/l/calder-astro-theme (£20)
+→ [Calder, the full Astro theme for photographers](https://mikesmithdesign.co.uk/themes/calder) (£20)
