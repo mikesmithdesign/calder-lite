@@ -118,3 +118,6 @@ h1,h2{color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em}
   .foot{flex-direction:column;gap:8px}
   .foot-links{flex-wrap:wrap;gap:14px}
 }
+
+/* the template credit should read as a link, like the other footer links */
+a[href*="mikesmithdesign.co.uk"]{text-decoration:underline;text-underline-offset:2px}
